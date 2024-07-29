@@ -1,4 +1,4 @@
-.container {
+.main-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,14 +25,47 @@
   gap: 10px;
 }
 
-#add-button {
-  padding: 15px 30px;
-  border: none;
-  background-color: #28a745; /* Green background */
-  color: white; /* White text */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer/hand icon */
-  font-size: 18px; /* Larger font size */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  transition: background-color 0.3s, transform 0.3s;
+.form-container {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
 }
+.form-title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.form-group button {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+}
+.form-group button:hover {
+  background-color: #218838;
+}
+
