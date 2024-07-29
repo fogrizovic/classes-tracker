@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.classesList {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-family: Arial, sans-serif;
+}
+
+.classesList__item {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+.item-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+#add-button {
+  padding: 15px 30px;
+  border: none;
+  background-color: #28a745; /* Green background */
+  color: white; /* White text */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer/hand icon */
+  font-size: 18px; /* Larger font size */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: background-color 0.3s, transform 0.3s;
+}
