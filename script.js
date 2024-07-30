@@ -21,12 +21,13 @@ function displayClassesList() {
       "beforeend",
       `
             <div id="${classItem.id}" class="classesList__item">
+                <div class="item-id">Id: ${classItem.id}</div>
                 <div class="item-title">Title: ${classItem.title}</div>
                 <div class="item-isCompleted">Completed: ${classItem.isCompleted}</div>
                 <iframe class="item-video" src="${classItem.url}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; " referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 <div class="item-actions">
-                    <button>Edit</button>
-                    <button>Delete</button>
+                    <button class="edit-btn">Edit</button>
+                    <button class="delete-btn">Delete</button>
                 </div> 
             </div>
             `
@@ -34,6 +35,28 @@ function displayClassesList() {
   });
 }
 
+function removeClassFromListById(id) {
+  let classesList = getClassesList();
+  classesList = classesList.filter((item) => item.id != id);
+  storeClassesList(classesList);
+}
+
+// Delete class
+function addDeleteListeners() {
+  const deleteButtons = document.querySelectorAll(".delete-btn");
+
+  deleteButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+        
+      const classItem = event.target.closest(".classesList__item");
+      removeClassFromListById(Number(classItem.id));
+
+      displayClassesList();
+    });
+  });
+}
+
+// Add class
 var form = document.getElementById("addClassForm");
 
 form.addEventListener("submit", function (event) {
@@ -57,3 +80,4 @@ form.addEventListener("submit", function (event) {
 
 // 1st time display classes
 displayClassesList();
+addDeleteListeners();
