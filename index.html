@@ -9,29 +9,29 @@
 </head>
 
 <body>
-    <main class="main-container">
+    <div class="page-wrapper">
         
         <h1>Classes Dashboard</h1>
         
-        <div id="classes-list" class="classesList"></div>
+        <div id="classes-list"></div>
 
         <div class="form-container">
             <div class="form-title">Add a Class</div>
             <form id="addClassForm">
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" id="title" name="title" placeholder="Clase XXX" required>
+                    <input type="text" id="title" name="title" placeholder="Class XXX" required>
                 </div>
                 <div class="form-group">
-                    <label for="url">Url</label>
-                    <input type="text" id="url" name="url" value="https://www.youtube.com/embed/wnPW3FQZ4mE?si=47ZnoRXEp10UnTTL" required>
+                    <label for="url">video Id</label>
+                    <input type="text" id="videoId" name="videoId" value="M8q2Fh52ySE" required>
                 </div>
                 <div class="form-group">
                     <button type="submit">Add</button>
                 </div>
             </form>
         </div>
-    </main>
+    </div>
 
     <script src="script.js"></script>
     <script src="test.js"></script>

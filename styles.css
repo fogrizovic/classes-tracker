@@ -1,22 +1,32 @@
-.main-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.page-wrapper {
+  padding: 20px;
+}
+*,
+:before,
+:after {
+  box-sizing: border-box;
 }
 
-.classesList {
+#classes-list {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
-  font-family: Arial, sans-serif;
 }
 
-.classesList__item {
+.classItem {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-width: 300px;
   border: 1px solid #ccc;
   border-radius: 10px;
   background-color: #f9f9f9;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 10px;
+}
+
+img {
+  object-fit: contain;
 }
 
 .item-actions {

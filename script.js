@@ -20,17 +20,21 @@ function displayClassesList() {
     classesListEl.insertAdjacentHTML(
       "beforeend",
       `
-            <div id="${classItem.id}" class="classesList__item">
-                <div class="item-id">Id: ${classItem.id}</div>
-                <div class="item-title">Title: ${classItem.title}</div>
-                <div class="item-isCompleted">Completed: ${classItem.isCompleted}</div>
-                <iframe class="item-video" src="${classItem.url}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; " referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                <div class="item-actions">
-                    <button class="edit-btn">Edit</button>
-                    <button class="delete-btn">Delete</button>
-                </div> 
-            </div>
-            `
+        <div id="${classItem.id}" class="classItem">
+          <div class="item-info">
+            <div class="item-id">Id: ${classItem.id}</div>
+            <div class="item-title">Title: ${classItem.title}</div>
+            <div class="item-description">Description: ${classItem.description}</div>
+            <div class="item-isCompleted">Completed: ${classItem.isCompleted}</div>
+          </div>
+          <img class="item-img" src="http://img.youtube.com/vi/${classItem.videoId}/maxresdefault.jpg">
+          <div class="item-actions">
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+            <button class="complete-btn">Mark Complete</button>
+          </div>      
+        </div>
+      `
     );
   });
 }
@@ -48,7 +52,7 @@ function addDeleteListeners() {
   deleteButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
         
-      const classItem = event.target.closest(".classesList__item");
+      const classItem = event.target.closest(".classItem");
       removeClassFromListById(Number(classItem.id));
 
       displayClassesList();
@@ -68,7 +72,7 @@ form.addEventListener("submit", function (event) {
     id: classesList.length + 1,
     title: document.getElementById("title").value,
     isCompleted: false,
-    url: document.getElementById("url").value,
+    videoId: document.getElementById("videoId").value,
   };
 
   classesList.push(obj);

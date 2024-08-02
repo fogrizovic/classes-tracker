@@ -2,39 +2,39 @@ function loadTestData() {
   storeClassesList([
     {
       id: 1,
-      title: "clase 1",
-      isCompleted: false,
-      url: "https://www.youtube.com/embed/V-fuhoNkpLE?si=G4_scaBwpEQcZt5V",
+      title: "class 1",
+      description: "html basics, browser devtools",
+      isCompleted: true,
+      videoId: "V-fuhoNkpLE",
     },
     {
       id: 2,
-      title: "clase 2",
+      title: "class 2",
+      description: "vs code, git, github",
       isCompleted: false,
-      url: "https://www.youtube.com/embed/M8q2Fh52ySE?si=MveLCos8D2yKCZJ_",
+      videoId: "M8q2Fh52ySE",
     },
     {
       id: 3,
-      title: "clase 3",
+      title: "class 3",
+      description: "html",
       isCompleted: false,
-      url: "https://www.youtube.com/embed/kKu5bGBMeis?si=RpCBOp40LR8HBIDh",
+      videoId: "kKu5bGBMeis",
     },
     {
-        id: 4,
-        title: "clase 4",
-        isCompleted: false,
-        url: "https://www.youtube.com/embed/wEJBpskTXHw?si=xIpCB_1ZpfKBGJy7",
-      },
-      {
-        id: 5,
-        title: "clase 5",
-        isCompleted: false,
-        url: "https://www.youtube.com/embed/3XZtl07nm8g?si=4d4tbRzNo35AVXeg",
-      },
-      {
-        id: 6,
-        title: "clase 6",
-        isCompleted: false,
-        url: "https://www.youtube.com/embed/TJmrJJqSi0s?si=sCP2kl4Kg1EnPI7e",
-      },
+      id: 4,
+      title: "class 4",
+      description: "css",
+      isCompleted: false,
+      videoId: "wEJBpskTXHw",
+    },
+    {
+      id: 5,
+      title: "class 1",
+      description: "git, github",
+      isCompleted: false,
+      videoId: "3XZtl07nm8g",
+    },
+    
   ]);
 }
