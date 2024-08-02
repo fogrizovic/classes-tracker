@@ -23,6 +23,11 @@
   background-color: #f9f9f9;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 10px;
+  background-color: #f8d7da;
+}
+
+.classItem-complete {
+  background-color: #d4edda;
 }
 
 img {

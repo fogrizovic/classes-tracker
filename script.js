@@ -10,6 +10,40 @@ function storeClassesList(classesList) {
   localStorage.setItem(CLASSES_LIST_KEY, classesString);
 }
 
+function getClassItemById(id) {
+  const classesList = getClassesList();
+  let item;
+  classesList.forEach((classItem) => {
+    if (classItem.id === id) {
+      item = classItem;
+    }
+  });
+  return item;
+}
+
+function updateClassesElementsIfCompleted() {
+  const classesElements = document.querySelectorAll(".classItem");
+
+  classesElements.forEach((classEl) => {
+    const elId = Number(classEl.id);
+    const isCompleted = getClassItemById(elId).isCompleted;
+
+    if (isCompleted) {
+      // change card color
+      classEl.classList.add("classItem-complete");
+
+      // add emoji
+      const itemTitleEl = classEl.querySelector(".item-title");
+      itemTitleEl.insertAdjacentHTML(
+        "beforeend",
+        `
+          <span>&#9989;</span>
+        `
+      );
+    }
+  });
+}
+
 function displayClassesList() {
   const classesListEl = document.getElementById("classes-list");
   classesListEl.innerHTML = "";
@@ -21,11 +55,10 @@ function displayClassesList() {
       "beforeend",
       `
         <div id="${classItem.id}" class="classItem">
+          <div class="item-id">${classItem.id}</div>
           <div class="item-info">
-            <div class="item-id">Id: ${classItem.id}</div>
             <div class="item-title">Title: ${classItem.title}</div>
             <div class="item-description">Description: ${classItem.description}</div>
-            <div class="item-isCompleted">Completed: ${classItem.isCompleted}</div>
           </div>
           <img class="item-img" src="http://img.youtube.com/vi/${classItem.videoId}/maxresdefault.jpg">
           <div class="item-actions">
@@ -37,6 +70,8 @@ function displayClassesList() {
       `
     );
   });
+
+  updateClassesElementsIfCompleted();
 }
 
 function removeClassFromListById(id) {
@@ -51,7 +86,6 @@ function addDeleteListeners() {
 
   deleteButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
-        
       const classItem = event.target.closest(".classItem");
       removeClassFromListById(Number(classItem.id));
 
