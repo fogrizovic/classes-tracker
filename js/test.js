@@ -1,5 +1,7 @@
-function loadTestData() {
-  storeClassesList([
+import StorageService from "./StorageService.js";
+
+export function loadTestData() {
+  StorageService.storeClassesList([
     {
       id: 1,
       title: "class 1",
@@ -38,3 +40,4 @@ function loadTestData() {
     
   ]);
 }
+
