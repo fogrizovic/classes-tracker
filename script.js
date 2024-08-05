@@ -94,7 +94,28 @@ function addDeleteListeners() {
   });
 }
 
+
+
 // Add class
+
+var addClassModal = document.getElementById("addClassModal");
+var addClassBtn = document.getElementById("addClassBtn");
+var closeModalBtn = document.getElementsByClassName("close")[0];
+
+addClassBtn.onclick = function() {
+  addClassModal.style.display = "block";
+}
+
+closeModalBtn.onclick = function() {
+  addClassModal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == addClassModal) {
+    addClassModal.style.display = "none";
+  }
+}
+
 var form = document.getElementById("addClassForm");
 
 form.addEventListener("submit", function (event) {
@@ -113,9 +134,13 @@ form.addEventListener("submit", function (event) {
 
   storeClassesList(classesList);
 
+  addClassModal.style.display = "none";
+
   displayClassesList();
 });
 
 // 1st time display classes
 displayClassesList();
 addDeleteListeners();
+
+
