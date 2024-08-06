@@ -98,10 +98,26 @@ img {
 }
 
 .modal-content {
+  position: relative;
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 20%;
+}
+
+.modal-content .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+#addClassBtn {
+  padding: 15px 30px;
+  font-size: 18px;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
