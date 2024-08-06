@@ -21,4 +21,18 @@ export default class StorageService {
     classesList = classesList.filter((item) => item.id != id);
     this.storeClassesList(classesList);
   }
+
+  static updateClass(classItem) {
+    let classesList = this.getClassesList();
+    let indexToReplace = classesList.findIndex(
+      (obj) => obj.id === classItem.id
+    );
+
+    if (indexToReplace !== -1) {
+      // If the object with the given id is found
+      classesList[indexToReplace] = classItem;
+    }
+
+    this.storeClassesList(classesList);
+  }
 }

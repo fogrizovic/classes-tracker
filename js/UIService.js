@@ -9,8 +9,6 @@ export default class UIService {
       const classItem = StorageService.getClassItemById(elId);
       if (classItem && classItem.isCompleted) {
         classEl.classList.add("classItem-complete");
-        const itemTitleEl = classEl.querySelector(".item-title");
-        itemTitleEl.insertAdjacentHTML("beforeend", "<span>&#9989;</span>");
       }
     });
   }
@@ -21,6 +19,9 @@ export default class UIService {
     const classesList = StorageService.getClassesList();
 
     classesList.forEach((classItem) => {
+
+      const completeBtnText = classItem.isCompleted ? "Mark Not Complete" : "Mark Completed"
+
       classesListEl.insertAdjacentHTML(
         "beforeend",
         `
@@ -34,7 +35,7 @@ export default class UIService {
             <div class="item-actions">
               <button class="edit-btn">Edit</button>
               <button class="delete-btn">Delete</button>
-              <button class="complete-btn">Mark Complete</button>
+              <button class="complete-btn">${completeBtnText}</button>
             </div>      
           </div>
         `
@@ -43,6 +44,7 @@ export default class UIService {
 
     this.updateClassesElementsIfCompleted();
     this.addDeleteListeners();
+    this.addCompleteListeners()
   }
 
   static addDeleteListeners() {
@@ -50,10 +52,68 @@ export default class UIService {
 
     deleteButtons.forEach((button) => {
       button.addEventListener("click", (event) => {
-        const classItem = event.target.closest(".classItem");
-        StorageService.removeClassFromListById(Number(classItem.id));
+        const classItemEl = event.target.closest(".classItem");
+        StorageService.removeClassFromListById(Number(classItemEl.id));
         this.displayClassesList();
       });
     });
   }
+
+  static addCompleteListeners() {
+    const completeButtons = document.querySelectorAll(".complete-btn");
+
+    completeButtons.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        const classItemEl = event.target.closest(".classItem");
+        const classItem = StorageService.getClassItemById(Number(classItemEl.id))
+        
+        classItem.isCompleted = classItem.isCompleted ? false : true
+
+        StorageService.updateClass(classItem);
+        this.displayClassesList();
+      });
+    });
+  }
+
+  static initAddClassModal() {
+    const addClassModal = document.getElementById("addClassModal");
+    const addClassBtn = document.getElementById("addClassBtn");
+    const closeModalBtn = document.getElementsByClassName("close")[0];
+
+    addClassBtn.onclick = () => {
+      addClassModal.style.display = "block";
+    }
+
+    closeModalBtn.onclick = () => {
+      addClassModal.style.display = "none";
+    }
+
+    window.onclick = (event) => {
+      if (event.target == addClassModal) {
+        addClassModal.style.display = "none";
+      }
+    }
+
+    const form = document.getElementById("addClassForm");
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+
+      const classesList = StorageService.getClassesList();
+
+      const newClass = {
+        id: classesList.length + 1,
+        title: document.getElementById("title").value,
+        isCompleted: false,
+        videoId: document.getElementById("videoId").value,
+      };
+
+      classesList.push(newClass);
+      StorageService.storeClassesList(classesList);
+      addClassModal.style.display = "none";
+      
+      UIService.displayClassesList();
+    });
+  }
+
 }
